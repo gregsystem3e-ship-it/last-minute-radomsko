@@ -115,7 +115,7 @@
   /* ---------- baner stanu ---------- */
   function renderBanner(){
     var h="";
-    if(dbMissing)h='<div class="note warn">Aplikacja nie jest połączona z bazą danych. Wpisz klucz projektu Supabase w pliku config.js (instrukcja w pliku README) i sprawdź połączenie z internetem.</div>';
+    if(dbMissing){var st=window.FLM_STATUS,why=st==="no-config"?"Nie znaleziono pliku config.js. Wgraj go do repozytorium na GitHub razem z pozostałymi plikami.":st==="placeholder"?"W pliku config.js nie ma jeszcze klucza projektu Supabase. Wklej klucz (Publishable key) i wgraj plik ponownie.":st==="no-lib"?"Nie wczytała się biblioteka Supabase. Sprawdź połączenie z internetem albo czy sieć (np. firmowa) nie blokuje stron cdn.jsdelivr.net i unpkg.com.":"Sprawdź połączenie z internetem i plik config.js.";h='<div class="note warn"><b>Aplikacja nie jest połączona z bazą danych.</b> '+esc(why)+'</div>'}
     else if(loadErr)h='<div class="note warn">Nie udało się wczytać danych z bazy. Odśwież stronę.</div>';
     else if(loadSlow&&!(ready.s&&ready.t))h='<div class="note warn">Dane ładują się dłużej niż zwykle. Sprawdź połączenie z internetem.</div>';
     else if(canWrite===false)h='<div class="note warn">Twoje konto ma tylko podgląd: możesz przeglądać oferty, ale nie możesz zmieniać danych salonu.</div>';

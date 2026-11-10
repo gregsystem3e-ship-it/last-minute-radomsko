@@ -4,5 +4,5 @@
  * NIGDY nie wklejaj tu klucza "secret" ani "service_role". */
 window.FLM_CONFIG = {
   url: "https://knvwuukmvamrtljpttpp.supabase.co",
-  key: "WKLEJ_TUTAJ_PUBLISHABLE_KEY"
+  key: "sb_publishable_ASPqT_Y6xQIyTvLBMMYhpQ_xWWfuKVC"
 };

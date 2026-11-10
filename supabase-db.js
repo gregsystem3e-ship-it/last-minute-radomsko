@@ -6,8 +6,10 @@
  */
 (function () {
   var cfg = window.FLM_CONFIG || {};
-  if (!cfg.url || !cfg.key || /WKLEJ/.test(cfg.key)) return;                 // brak klucza: aplikacja pokaże komunikat
-  if (!(window.supabase && window.supabase.createClient)) return;            // biblioteka się nie wczytała
+  if (!window.FLM_CONFIG) { window.FLM_STATUS = "no-config"; return; }       // brak pliku config.js
+  if (!cfg.url || !cfg.key || /WKLEJ/.test(cfg.key)) { window.FLM_STATUS = "placeholder"; return; } // brak klucza
+  if (!(window.supabase && window.supabase.createClient)) { window.FLM_STATUS = "no-lib"; return; }  // biblioteka się nie wczytała
+  window.FLM_STATUS = "ok";
   var sb = window.supabase.createClient(cfg.url, cfg.key, { auth: { persistSession: true, autoRefreshToken: true } });
 
   var MAP = {
